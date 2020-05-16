@@ -1,6 +1,8 @@
 {
-  "name": "ng-utils",
+  "name": "@thalesrc/ng-utils",
   "version": "0.0.0",
+  "description": "A package to store commonly used angular application contents",
+  "keywords": ["angular", "ng", "util", "utils", "library", "image-input"],
   "author": {
     "name": "Ali Şahin Özçelik",
     "email": "alisahinozcelik@gmail.com"
@@ -8,11 +10,16 @@
   "scripts": {
     "start": "ng serve playground",
     "build": "ng build ng-utils --prod",
+    "version-update": "npm version $PACKAGE_VERSION --no-git-tag-version",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@angular/animations": "~8.0.3",
     "@angular/common": "~8.0.3",
@@ -22,19 +29,20 @@
     "@angular/platform-browser": "~8.0.3",
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
+    "@thalesrc/js-utils": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.800.6",
+    "@angular-devkit/build-angular": "^0.800.6",
     "@angular-devkit/build-ng-packagr": "~0.800.6",
     "@angular/cli": "~8.0.6",
     "@angular/compiler-cli": "~8.0.3",
     "@angular/language-service": "~8.0.3",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",

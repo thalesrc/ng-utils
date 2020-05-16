@@ -7,7 +7,12 @@
       "projectType": "library",
       "root": "projects/ng-utils",
       "sourceRoot": "projects/ng-utils/src",
-      "prefix": "lib",
+      "prefix": "tha",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -97,7 +102,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "playground:build"
+            "browserTarget": "playground:build",
+            "port": 3600
           },
           "configurations": {
             "production": {

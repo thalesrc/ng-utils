@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "ng-utils": [
-        "dist/ng-utils"
+      "@ng-utils": [
+        "projects/ng-utils/src/public-api.ts"
       ],
-      "ng-utils/*": [
-        "dist/ng-utils/*"
+      "@ng-utils/*": [
+        "projects/ng-utils/src/lib/*"
       ]
     }
   }
