@@ -3,5 +3,9 @@
   "dest": "../../dist/ng-utils",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@thalesrc/js-utils"
+  ],
+  "keepLifecycleScripts": true
 }
