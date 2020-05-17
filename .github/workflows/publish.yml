@@ -23,8 +23,6 @@ jobs:
       # - run: rm ./package-lock.json
       # - run: npm install
       # - run: npm run prepare:legacy
-      - run: cd ./dist/ng-utils
-      - run: npm run version-update
-      - run: npm publish
+      - run: cd ./dist/ng-utils && npm run version-update && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
