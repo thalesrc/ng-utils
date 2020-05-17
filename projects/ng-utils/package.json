@@ -1,8 +1,27 @@
 {
-  "name": "ng-utils",
-  "version": "0.0.1",
+  "name": "@thalesrc/ng-utils",
+  "version": "0.0.0",
+  "description": "A package to store commonly used angular application contents",
+  "keywords": ["angular", "ng", "util", "utils", "library", "image-input"],
+  "author": {
+    "name": "Ali Şahin Özçelik",
+    "email": "alisahinozcelik@gmail.com"
+  },
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "version-update": "npm version $PACKAGE_VERSION --no-git-tag-version"
+  },
   "peerDependencies": {
     "@angular/common": "^8.0.3",
-    "@angular/core": "^8.0.3"
+    "@angular/core": "^8.0.3",
+    "@angular/forms": "^8.0.3",
+    "rxjs": "^6.4.0"
+  },
+  "dependencies": {
+    "@thalesrc/js-utils": "^2.0.8"
   }
 }

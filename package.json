@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "ng serve playground",
-    "build": "ng build ng-utils --prod",
-    "version-update": "npm version $PACKAGE_VERSION --no-git-tag-version",
+    "build": "ng build ng-utils",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
