@@ -1,4 +1,4 @@
-import { Directive, forwardRef, Input, OnInit, ElementRef, HostListener } from '@angular/core';
+import { Directive, forwardRef, Input, OnInit, ElementRef, HostListener, HostBinding } from '@angular/core';
 import { NG_VALIDATORS, NG_VALUE_ACCESSOR, ControlValueAccessor, Validator } from '@angular/forms';
 import { noop } from '@thalesrc/js-utils/function/noop';
 import { BehaviorSubject, combineLatest, fromEvent, merge } from 'rxjs';
@@ -55,6 +55,11 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
     console.log(src);
 
     this.src$.next(src);
+  }
+
+  @HostBinding('style.cursor')
+  public get _cursor(): string {
+    return this.disabled ? null : 'pointer';
   }
 
   private static createInput() {
