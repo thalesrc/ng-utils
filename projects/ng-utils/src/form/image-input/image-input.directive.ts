@@ -3,8 +3,8 @@ import { NG_VALIDATORS, NG_VALUE_ACCESSOR, ControlValueAccessor, Validator } fro
 import { noop } from '@thalesrc/js-utils/function/noop';
 import { BehaviorSubject, combineLatest, fromEvent, merge } from 'rxjs';
 import { map, distinctUntilChanged, first } from 'rxjs/operators';
-import { Unsubscriber } from '../../../utils/unsubscriber';
-import { shareLast } from '../../../utils/share-last';
+import { Unsubscriber } from '../../utils/unsubscriber';
+import { shareLast } from '../../utils/share-last';
 
 @Directive({
   // tslint:disable-next-line:directive-selector

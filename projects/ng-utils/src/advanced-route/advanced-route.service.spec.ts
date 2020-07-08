@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgUtilsService } from './ng-utils.service';
+import { AdvancedRouteService } from './advanced-route.service';
 
-describe('NgUtilsService', () => {
+describe('AdvancedRouteService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NgUtilsService = TestBed.get(NgUtilsService);
+    const service: AdvancedRouteService = TestBed.get(AdvancedRouteService);
     expect(service).toBeTruthy();
   });
 });
