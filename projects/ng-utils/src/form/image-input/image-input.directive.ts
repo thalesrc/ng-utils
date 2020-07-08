@@ -52,8 +52,6 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
 
   @Input('src')
   private set _src(src: string) {
-    console.log(src);
-
     this.src$.next(src);
   }
 
