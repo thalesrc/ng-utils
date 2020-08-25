@@ -28,7 +28,7 @@ export class AdvancedRouteService {
   public activeRoutes$ = this.deepestRoute$.pipe(map(r => r.pathFromRoot), shareLast());
 
   /**
-   * Emits route parameters ıb route change
+   * Emits route parameters on route change
    */
   public params$: Observable<Params> = this.activeRoutes$.pipe(
     map(routes => routes.map(r => r.snapshot)),
