@@ -10,12 +10,12 @@ Advanced route implementations
 
 Contains observables of developer friendly route data
 
-`routeChange$`: Emits activated route on route change
-`deepestRoute$`: Emits deepest route on route change
-`activeRoutes$`: Emits all active routes (from root to deepest child) on route change
-`params$`: Emits route parameters on route change
-`segments$`: Emits route segments
-`data$`: Emits route data
+* `routeChange$`: Emits activated route on route change
+* `deepestRoute$`: Emits deepest route on route change
+* `activeRoutes$`: Emits all active routes (from root to deepest child) on route change
+* `params$`: Emits route parameters on route change
+* `segments$`: Emits route segments
+* `data$`: Emits route data
 
 Usage:
 
@@ -66,6 +66,15 @@ Usage:
 </form>
 ```
 
+Trigger openning selection by another element
+
+```html
+<form>
+  <img [thaImageInput]="{button: imgBtn}" [src]="(user$ | async)?.avatar || 'assets/img/avatar.png'" ngModel name="avatar">
+  <button type="button" #imgBtn>Change Image</button>
+</form>
+```
+
 ## Substitute
 
 Create portals in components and manage it from outside
@@ -98,7 +107,7 @@ Usage:
 
 ### InputStream
 
-Convert an `@Input()` into a stream of data. The prop turns into an observable and emits on every change. Makes your components easily to act more reactively
+Convert an `@Input()` into a stream of data. The prop turns into an observable and emits on every change.
 
 Usage:
 ```typescript
@@ -120,12 +129,36 @@ export class FooComponent implements OnInit {
 }
 ```
 
+### ListenerStream
+
+Convert an `@HostListener()` into a stream of data. The prop turns into an observable and emits on every event.
+
+Usage:
+```typescript
+@Component({
+  selector: 'app-foo',
+  templateUrl: './foo.component.html',
+  styleUrls: ['./foo.component.scss']
+})
+export class FooComponent implements OnInit {
+  @HostListener('click', ['$event'])
+  @ListenerStream()
+  public bar: Observable<MouseEvent>;
+
+  ngOnInit() {
+    this.bar.subscribe(event => {
+      console.log(event);
+    });
+  }
+}
+```
+
 ### Unsubscriber
 
 Provides some properties into your components to make managing rxjs observables much secure on destroy.
 
-`subs` (setter): set your subscription into this prop to make it unsubscribe when the component destroyed
-`onDestroy$`: emits and completes when the component destroyed
+* `subs` (setter): set your subscription into this prop to make it unsubscribe when the component destroyed
+* `onDestroy$`: emits and completes when the component destroyed
 
 _Note: If you have to use `ngOnDestroy` method of a component on `Unsubscriber` extended, use `super.ngOnDestroy();` in `ngOnDestroy` method to keep the functionality of `Unsubscriber`_
 

@@ -4,6 +4,8 @@
     "codelyzer"
   ],
   "rules": {
+    "only-arrow-functions": false,
+    "no-angle-bracket-type-assertion": false,
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {

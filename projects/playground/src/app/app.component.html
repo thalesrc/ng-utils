@@ -1,6 +1,7 @@
 <form #form="ngForm">
-  <img [src]="image | async" thaImageInput [disabled]="false" ngModel name="image">
+  <img [src]="image | async" [thaImageInput]="{button: imgBtn}" [disabled]="false" ngModel name="image">
 </form>
+<button #imgBtn>Change Image</button>
 
 <pre>{{form.value | json}}</pre>
 

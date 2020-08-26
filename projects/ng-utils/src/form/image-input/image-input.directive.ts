@@ -1,10 +1,16 @@
 import { Directive, forwardRef, Input, OnInit, ElementRef, HostListener, HostBinding } from '@angular/core';
 import { NG_VALIDATORS, NG_VALUE_ACCESSOR, ControlValueAccessor, Validator } from '@angular/forms';
 import { noop } from '@thalesrc/js-utils/function/noop';
-import { BehaviorSubject, combineLatest, fromEvent, merge } from 'rxjs';
-import { map, distinctUntilChanged, first } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, fromEvent, merge, Observable } from 'rxjs';
+import { map, distinctUntilChanged, first, pluck, switchMap, filter } from 'rxjs/operators';
 import { Unsubscriber } from '../../utils/unsubscriber';
 import { shareLast } from '../../utils/share-last';
+import { InputStream } from '../../utils/input-stream';
+import { ListenerStream } from '../../utils/listener-stream';
+
+interface ImageInputConfig {
+  button?: HTMLElement;
+}
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -25,10 +31,17 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
 
   private input = ImageInputDirective.createInput();
 
-  private src$ = new BehaviorSubject<string>(ImageInputDirective.TRANSPARENT_URL);
+  @Input()
+  @InputStream(ImageInputDirective.TRANSPARENT_URL)
+  public src: Observable<string>;
+
+  @Input('thaImageInput')
+  @InputStream()
+  public config: Observable<ImageInputConfig>;
+
   private modelFile$ = new BehaviorSubject<File>(null);
 
-  private emptySource$ = this.src$.pipe(
+  private emptySource$ = this.src.pipe(
     distinctUntilChanged()
   );
 
@@ -47,18 +60,15 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
 
   public file$ = merge(this.modelFile$, this.inputChange$).pipe(shareLast());
 
+  @HostListener('click', ['$event'])
+  @ListenerStream()
+  private hostClick: Observable<void>;
+
   @Input()
   private disabled = false;
 
-  @Input('src')
-  private set _src(src: string) {
-    this.src$.next(src);
-  }
-
   @HostBinding('style.cursor')
-  public get _cursor(): string {
-    return this.disabled ? null : 'pointer';
-  }
+  public cursor: null | 'pointer' = null;
 
   private static createInput() {
     const input = document.createElement('input');
@@ -74,21 +84,13 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
     super();
   }
 
-  @HostListener('click')
-  public onHostClick() {
-    if (this.disabled) {
-      return;
-    }
-
-    this.onTouched();
-    this.input.click();
-  }
-
   public ngOnInit() {
+    // Emit Change
     this.subs = this.inputChange$.subscribe(value => {
       this.onChange(value);
     });
 
+    // Change image src url
     this.subs = combineLatest(this.file$, this.emptySource$).subscribe(([file, src]) => {
       if (!file) {
         this.el.nativeElement.src = src;
@@ -97,6 +99,25 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
       }
 
       this.el.nativeElement.src = URL.createObjectURL(file);
+    });
+
+    // Open selector
+    this.subs = this.config.pipe(
+      map(config => config || {}),
+      pluck('button'),
+      switchMap(button => button ? fromEvent(button, 'click') : this.hostClick),
+      filter(() => !this.disabled)
+    ).subscribe(() => {
+      this.onTouched();
+      this.input.click();
+    });
+
+    // Set Cursor
+    this.subs = this.config.pipe(
+      map(config => config || {}),
+      pluck('button'),
+    ).subscribe(button => {
+      this.cursor = (button || this.disabled) ? null : 'pointer';
     });
   }
 
