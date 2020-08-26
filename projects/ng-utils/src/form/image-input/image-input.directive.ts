@@ -86,12 +86,22 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
 
   public ngOnInit() {
     // Emit Change
-    this.subs = this.inputChange$.subscribe(value => {
+    this.subs = this.file$.subscribe(value => {
       this.onChange(value);
     });
 
+    // Reset model when new src url emitted
+    this.subs = this.src.subscribe(src => {
+      this.input.value = '';
+      this.modelFile$.next(null);
+
+      this.el.nativeElement.src = src;
+    });
+
     // Change image src url
-    this.subs = combineLatest(this.file$, this.emptySource$).subscribe(([file, src]) => {
+    this.subs = combineLatest(this.file$, this.emptySource$).pipe(
+      distinctUntilChanged(([xFile, xSrc], [yFile, ySrc]) => xFile === yFile && xSrc === ySrc)
+    ).subscribe(([file, src]) => {
       if (!file) {
         this.el.nativeElement.src = src;
 

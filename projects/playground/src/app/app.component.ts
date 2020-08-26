@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { interval } from 'rxjs';
-import { take, mapTo, startWith } from 'rxjs/operators';
+import { interval, BehaviorSubject } from 'rxjs';
+import { take, mapTo, startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,14 @@ import { take, mapTo, startWith } from 'rxjs/operators';
 })
 export class AppComponent {
   // tslint:disable-next-line:max-line-length
-  public image = interval(3000).pipe(take(1), mapTo('assets/angular.svg'), startWith(''));
+  public image = new BehaviorSubject('');
+
+  private count = 0;
+  public changeImage() {
+    this.image.next(`https://picsum.photos/id/${this.count++ * 100}/200/300`);
+  }
+
+  public modelChange(event: any) {
+    console.log(event);
+  }
 }
