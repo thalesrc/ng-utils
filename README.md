@@ -2,6 +2,10 @@
 
 A package to store commonly used angular application contents
 
+[![npm](https://img.shields.io/npm/v/@thalesrc/ng-utils.svg)](https://www.npmjs.com/package/@thalesrc/ng-utils)
+[![npm](https://img.shields.io/npm/dw/@thalesrc/ng-utils.svg)](https://www.npmjs.com/package/@thalesrc/ng-utils)
+[![npm](https://img.shields.io/npm/l/@thalesrc/ng-utils.svg)](https://github.com/thalesrc/ng-utils/blob/master/LICENSE)
+
 ## Advanced Route
 
 Advanced route implementations
