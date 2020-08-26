@@ -16,13 +16,8 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm install
-      # - run: npm test
       - run: npm run build
-      # - run: npm run change-ts-version
-      # - run: rm -rf node_modules
-      # - run: rm ./package-lock.json
-      # - run: npm install
-      # - run: npm run prepare:legacy
+      - run: cp ./README.md ./dist/ng-utils
       - run: cd ./dist/ng-utils && npm run version-update && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
