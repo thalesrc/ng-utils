@@ -79,6 +79,38 @@ Trigger openning selection by another element
 </form>
 ```
 
+## Overlay
+
+Create your own custom modals, dialogs etc.
+
+### OverlayComponent
+
+`tha-overlay` component comes with no styling except cdk prebuilt styles. It contains only the open/close functionality based on `CdkOverlay` so feel free to use it with your other `CdkOverlay` based components.
+
+* `exportAs`: 'thaOverlay'
+* `open()`: Open the modal
+  *  _[Returns] A promise which emits the value set on close_
+* `close(event: any)`: Closes the modal by emitting a value
+  * [Arg] `event`: the value to emit (default false)
+* `(closed)`: [EventEmitter] Emits the values set when it closed _(Emits `false` when no value is set or if it's closed by backdrop click)_
+
+Usage:
+```scss
+// style.scss
+@import '~@angular/cdk/overlay-prebuilt.css';
+```
+
+```html
+<!-- component.html -->
+<button (click)="modal.open()">Open Modal</button>
+
+<tha-overlay #modal>
+  <div>My custom content</div>
+  <button (click)="modal.close()">Cancel</button>
+  <button (click)="modal.close({foo: true})">Submit</button>
+</tha-overlay>
+```
+
 ## Substitute
 
 Create portals in components and manage it from outside
