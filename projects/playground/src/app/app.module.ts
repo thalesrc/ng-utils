@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ImageInputModule, SubstituteModule } from '@ng-utils';
+import { ImageInputModule, SubstituteModule, OverlayModule } from '@ng-utils';
 import { FormsModule } from '@angular/forms';
 import { TestComponent } from './test/test.component';
 
@@ -15,7 +15,8 @@ import { TestComponent } from './test/test.component';
     BrowserModule,
     ImageInputModule,
     FormsModule,
-    SubstituteModule
+    SubstituteModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

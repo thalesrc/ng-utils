@@ -9,3 +9,10 @@
 <tha-substitute thaSubstituteScope="test"></tha-substitute>
 
 <app-test [a]="1"></app-test>
+
+<button (click)="overlay.open()">Open Overlay</button>
+<button (click)="openOverlay()">Open Overlay Programmatically</button>
+
+<tha-overlay #overlay>
+  <button (click)="overlay.close({yepp: true})">Submit</button>
+</tha-overlay>
