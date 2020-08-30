@@ -32,6 +32,9 @@ export class OverlayComponent implements AfterViewInit {
   @Output()
   public closed = new EventEmitter<any>();
 
+  @Output()
+  public opened = new EventEmitter<void>();
+
   public ngAfterViewInit() {
     this.onReady.resolve(null);
 
@@ -48,6 +51,7 @@ export class OverlayComponent implements AfterViewInit {
   public async open(): Promise<any> {
     await this.onReady.promise;
     await this.directive.open();
+    this.opened.emit();
 
     return this.closed.pipe(first()).toPromise();
   }

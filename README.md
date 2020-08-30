@@ -92,12 +92,45 @@ Create your own custom modals, dialogs etc.
   *  _[Returns] A promise which emits the value set on close_
 * `close(event: any)`: Closes the modal by emitting a value
   * [Arg] `event`: the value to emit (default false)
-* `(closed)`: [EventEmitter] Emits the values set when it closed _(Emits `false` when no value is set or if it's closed by backdrop click)_
+* `(opened)`: [EventEmitter] Emits when it is opened
+* `(closed)`: [EventEmitter] Emits the values set when it is closed _(Emits `false` when no value is set or if it's closed by backdrop click)_
 
 Usage:
 ```scss
 // style.scss
 @import '~@angular/cdk/overlay-prebuilt.css';
+```
+
+**Requires module import both at root module and at the module to use**
+```typescript
+import { OverlayModule } from '@thalesrc/ng-utils';
+
+// app.module.ts
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    OverlayModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+// foo.module.ts
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    OverlayModule
+  ],
+  providers: [],
+})
+export class FooModule { }
 ```
 
 ```html
