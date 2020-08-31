@@ -74,7 +74,7 @@ Trigger openning selection by another element
 
 ```html
 <form>
-  <img [thaImageInput]="{button: imgBtn}" [src]="(user$ | async)?.avatar || 'assets/img/avatar.png'" ngModel name="avatar">
+  <img thaImageInput [changeButton]="imgBtn" [src]="(user$ | async)?.avatar || 'assets/img/avatar.png'" ngModel name="avatar">
   <button type="button" #imgBtn>Change Image</button>
 </form>
 ```

@@ -2,21 +2,17 @@ import { Directive, forwardRef, Input, OnInit, ElementRef, HostListener, HostBin
 import { NG_VALIDATORS, NG_VALUE_ACCESSOR, ControlValueAccessor, Validator } from '@angular/forms';
 import { noop } from '@thalesrc/js-utils/function/noop';
 import { BehaviorSubject, combineLatest, fromEvent, merge, Observable } from 'rxjs';
-import { map, distinctUntilChanged, first, pluck, switchMap, filter, debounceTime } from 'rxjs/operators';
+import { map, distinctUntilChanged, first, switchMap, filter, takeUntil } from 'rxjs/operators';
 import { Unsubscriber } from '../../utils/unsubscriber';
 import { shareLast } from '../../utils/share-last';
 import { InputStream } from '../../utils/input-stream';
 import { ListenerStream } from '../../utils/listener-stream';
 
-interface ImageInputConfig {
-  button?: HTMLElement;
-}
-
 @Directive({
   // tslint:disable-next-line:directive-selector
   selector: 'img[thaImageInput]',
   providers: [
-    { provide: NG_VALIDATORS, useExisting: ImageInputDirective, multi: true },
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => ImageInputDirective), multi: true },
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ImageInputDirective), multi: true}
   ],
   exportAs: 'thaImageInput'
@@ -35,9 +31,9 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
   @InputStream(ImageInputDirective.TRANSPARENT_URL)
   public src: Observable<string>;
 
-  @Input('thaImageInput')
+  @Input('changeButton')
   @InputStream()
-  public config: Observable<ImageInputConfig>;
+  public button: Observable<HTMLElement>;
 
   private modelFile$ = new BehaviorSubject<File>(null);
 
@@ -86,12 +82,12 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
 
   public ngOnInit() {
     // Emit Change
-    this.subs = this.file$.subscribe(value => {
+    this.file$.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
       this.onChange(value);
     });
 
     // Reset model when new src url emitted
-    this.subs = this.src.subscribe(src => {
+    this.src.pipe(takeUntil(this.onDestroy$)).subscribe(src => {
       this.input.value = '';
       this.modelFile$.next(null);
 
@@ -99,8 +95,9 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
     });
 
     // Change image src url
-    this.subs = combineLatest(this.file$, this.emptySource$).pipe(
-      distinctUntilChanged(([xFile, xSrc], [yFile, ySrc]) => xFile === yFile && xSrc === ySrc)
+    combineLatest(this.file$, this.emptySource$).pipe(
+      distinctUntilChanged(([xFile, xSrc], [yFile, ySrc]) => xFile === yFile && xSrc === ySrc),
+      takeUntil(this.onDestroy$)
     ).subscribe(([file, src]) => {
       if (!file) {
         this.el.nativeElement.src = src;
@@ -112,21 +109,19 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
     });
 
     // Open selector
-    this.subs = this.config.pipe(
-      map(config => config || {}),
-      pluck('button'),
+    this.button.pipe(
+      distinctUntilChanged(),
       switchMap(button => button ? fromEvent(button, 'click') : this.hostClick),
-      filter(() => !this.disabled)
+      filter(() => !this.disabled),
+      takeUntil(this.onDestroy$)
     ).subscribe(() => {
       this.onTouched();
       this.input.click();
     });
 
     // Set Cursor
-    this.subs = this.config.pipe(
-      map(config => config || {}),
-      pluck('button'),
-      debounceTime(100),
+    this.button.pipe(
+      takeUntil(this.onDestroy$)
     ).subscribe(button => {
       this.cursor = (button || this.disabled) ? null : 'pointer';
     });

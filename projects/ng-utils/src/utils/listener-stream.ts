@@ -1,28 +1,39 @@
 import { Subject } from 'rxjs';
+import { noop } from '@thalesrc/js-utils/function/noop';
+
+const CACHE = new WeakMap();
 
 export function ListenerStream(): PropertyDecorator {
   return (target: any, key: string) => {
-    const subject = new Subject();
+    Object.defineProperty(target, key, {
+      get() {
+        if (!CACHE.has(this)) {
+          CACHE.set(this, {});
+        }
 
-    function handler(...args: any[]) {
-      switch (args.length) {
-        case 0:
-          subject.next();
-          break;
-        case 1:
-          subject.next(args[0]);
-          break;
-        default:
-          subject.next(args);
-      }
-    }
+        const cacheItem = CACHE.get(this);
 
-    target[key] = new Proxy(handler, {
-      get(_, prop) {
-        return subject[prop];
+        if (!(key in cacheItem)) {
+          const subject = new Subject();
+
+          cacheItem[key] = new Proxy(noop, {
+            get(_, prop) {
+              return subject[prop];
+            },
+            apply(_, __, args: any[]) {
+              args.length > 1
+                ? subject.next(args)
+                : args.length > 0
+                ? subject.next(args[0])
+                : subject.next();
+            }
+          });
+        }
+
+        return cacheItem[key];
       },
-      apply(_, __, args: any[]) {
-        return handler(...args);
+      set() {
+        throw new Error('Setting ListenerStream propery is forbidden');
       }
     });
   };
