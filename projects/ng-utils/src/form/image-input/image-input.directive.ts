@@ -2,12 +2,11 @@ import { Directive, forwardRef, Input, OnInit, ElementRef, HostListener, HostBin
 import { NG_VALIDATORS, NG_VALUE_ACCESSOR, ControlValueAccessor, Validator } from '@angular/forms';
 import { noop } from '@thalesrc/js-utils/function/noop';
 import { BehaviorSubject, combineLatest, fromEvent, merge, Observable } from 'rxjs';
-import { map, distinctUntilChanged, first, pluck, switchMap, filter } from 'rxjs/operators';
+import { map, distinctUntilChanged, first, pluck, switchMap, filter, debounceTime } from 'rxjs/operators';
 import { Unsubscriber } from '../../utils/unsubscriber';
 import { shareLast } from '../../utils/share-last';
 import { InputStream } from '../../utils/input-stream';
 import { ListenerStream } from '../../utils/listener-stream';
-import { defer, of } from '@thalesrc/js-utils/legacy';
 
 interface ImageInputConfig {
   button?: HTMLElement;
@@ -127,7 +126,7 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
     this.subs = this.config.pipe(
       map(config => config || {}),
       pluck('button'),
-      switchMap(button => defer().then(of(button))),
+      debounceTime(100),
     ).subscribe(button => {
       this.cursor = (button || this.disabled) ? null : 'pointer';
     });
