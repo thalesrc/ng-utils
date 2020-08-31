@@ -7,6 +7,7 @@ import { Unsubscriber } from '../../utils/unsubscriber';
 import { shareLast } from '../../utils/share-last';
 import { InputStream } from '../../utils/input-stream';
 import { ListenerStream } from '../../utils/listener-stream';
+import { defer, of } from '@thalesrc/js-utils/legacy';
 
 interface ImageInputConfig {
   button?: HTMLElement;
@@ -126,6 +127,7 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
     this.subs = this.config.pipe(
       map(config => config || {}),
       pluck('button'),
+      switchMap(button => defer().then(of(button))),
     ).subscribe(button => {
       this.cursor = (button || this.disabled) ? null : 'pointer';
     });
