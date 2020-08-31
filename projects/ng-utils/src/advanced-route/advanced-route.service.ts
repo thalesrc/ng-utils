@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
 import { isTruthy } from '@thalesrc/js-utils/is-truthy';
-import { deepest } from '@thalesrc/js-utils/object';
+import { deepest } from '@thalesrc/js-utils/object/deepest';
 import { Observable } from 'rxjs';
 import { filter, map, startWith } from 'rxjs/operators';
 import { shareLast } from '../utils/share-last';
