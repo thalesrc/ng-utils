@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, HostListener } from '@angular/core';
 import { interval, BehaviorSubject } from 'rxjs';
 import { take, mapTo, startWith, map } from 'rxjs/operators';
 import { OverlayComponent } from '@ng-utils';
@@ -12,19 +12,32 @@ export class AppComponent {
   // tslint:disable-next-line:max-line-length
   public image = new BehaviorSubject('');
 
+  constructor() {
+    // setInterval(this.changeImage.bind(this), 1000);
+  }
+
   @ViewChild(OverlayComponent, {static: true})
   private overlay: OverlayComponent;
 
   private count = 0;
   public changeImage() {
-    this.image.next(`https://picsum.photos/id/${this.count++ * 100}/200/300`);
+    this.image.next(`https://picsum.photos/id/${this.count++}/${Math.floor(Math.random() * 500)}/${Math.floor(Math.random() * 500)}`);
+  }
+
+  @HostListener('window:keyup.r')
+  public rrr() {
+    this.changeImage();
   }
 
   public modelChange(event: any) {
-    console.log(event);
+    // console.log(event);
   }
 
   public openOverlay() {
     this.overlay.open().then(console.log);
+  }
+
+  public onResize(event) {
+    console.log(event);
   }
 }

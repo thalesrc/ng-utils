@@ -8,8 +8,23 @@
     "util",
     "utils",
     "library",
-    "image-input",
-    "advanced-route"
+    "image",
+    "input",
+    "route",
+    "router",
+    "data",
+    "portal",
+    "substitute",
+    "overlay",
+    "modal",
+    "dialog",
+    "stream",
+    "host",
+    "listener",
+    "size",
+    "resize",
+    "change",
+    "animate"
   ],
   "author": {
     "name": "Ali Şahin Özçelik",
@@ -38,6 +53,7 @@
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
     "@thalesrc/js-utils": "^2.2.0",
+    "@thalesrc/resize-manager": "^0.3.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

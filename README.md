@@ -83,6 +83,9 @@ Trigger openning selection by another element
 
 Create your own custom modals, dialogs etc.
 
+_Dependencies:_
+* @angular/cdk
+
 ### OverlayComponent
 
 `tha-overlay` component comes with no styling except cdk prebuilt styles. It contains only the open/close functionality based on `CdkOverlay` so feel free to use it with your other `CdkOverlay` based components.
@@ -142,6 +145,89 @@ export class FooModule { }
   <button (click)="modal.close()">Cancel</button>
   <button (click)="modal.close({foo: true})">Submit</button>
 </tha-overlay>
+```
+
+## Resize
+
+Observe element's size changes, animate their size, etc..
+
+_Dependencies:_
+* @angular/animations
+* @angular/platform-browser
+* @thalesrc/resize-manager
+
+### ResizeService
+
+Observe an element's size changes, listen window.resize
+
+Usage:
+```typescript
+@Component({
+  selector: 'app-foo',
+  templateUrl: './foo.component.html',
+  styleUrls: ['./foo.component.scss']
+})
+export class FooComponent implements OnInit {
+  constructor(
+    private resizeService: ResizeService,
+    private el: ElementRef
+  ) {}
+
+  ngOnInit() {
+    this.resizeService.windowResize$.subscribe(({width, height}) => {
+      console.log(width, height);
+    });
+
+    this.resizeService.observe(this.el.nativeElement).subscribe(({width, height}) => {
+      console.log(width, height);
+    });
+
+    this.resizeService.observe(document.querySelector('bar')).subscribe(({width, height}) => {
+      console.log(width, height);
+    });
+  }
+}
+
+```
+
+### ResizeDirective
+
+Emits size change events of an element
+
+Usage:
+
+```html
+<!-- Listen both width and height change ($event: {width: number, height: number}) -->
+<img [src]="src$ | async" thaResize (onResize)="postSizeChange($event)">
+
+<!-- Listen only width change ($event: number) -->
+<img [src]="src$ | async" thaResize="width" (onResize)="postWidthChange($event)">
+
+<!-- Listen only height change ($event: number) -->
+<img [src]="src$ | async" thaResize="height" (onResize)="postHeightChange($event)">
+```
+
+### AnimateResizeDirective
+
+Animate resizing of an element
+
+Usage:
+
+```html
+<!-- Animate both width and height change -->
+<img [src]="src$ | async" thaAnimateResize>
+
+<!-- Animate only width change -->
+<img [src]="src$ | async" thaAnimateResize="width">
+
+<!-- Animate only height change -->
+<img [src]="src$ | async" thaAnimateResize="height">
+
+<!-- Set animation duration  -->
+<img [src]="src$ | async" thaAnimateResize duration="1000">
+
+<!-- Do smth when animation completed  -->
+<img [src]="src$ | async" thaAnimateResize (animationComplete)="doSomething()">
 ```
 
 ## Substitute
