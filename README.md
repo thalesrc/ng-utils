@@ -84,7 +84,10 @@ Trigger openning selection by another element
 Create your own custom modals, dialogs etc.
 
 _Dependencies:_
-* @angular/cdk
+* `@angular/cdk`
+
+_Required Root Module Imports:_
+* `OverlayModule` from `@thalesrc/ng-utils`
 
 ### OverlayComponent
 
@@ -104,25 +107,7 @@ Usage:
 @import '~@angular/cdk/overlay-prebuilt.css';
 ```
 
-**Requires module import both at root module and at the module to use**
 ```typescript
-import { OverlayModule } from '@thalesrc/ng-utils';
-
-// app.module.ts
-@NgModule({
-  declarations: [
-    ...
-  ],
-  imports: [
-    ...
-    OverlayModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
-// foo.module.ts
 @NgModule({
   declarations: [
     ...
@@ -152,9 +137,12 @@ export class FooModule { }
 Observe element's size changes, animate their size, etc..
 
 _Dependencies:_
-* @angular/animations
-* @angular/platform-browser
-* @thalesrc/resize-manager
+* `@angular/animations`
+* `@angular/platform-browser`
+* `@thalesrc/resize-manager`
+
+_Required Root Module Imports:_
+* `BrowserAnimationsModule` from `@angular/platform-browser/animations`
 
 ### ResizeService
 
