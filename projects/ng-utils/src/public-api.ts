@@ -3,7 +3,7 @@
  */
 
 export * from './advanced-route/index';
-export * from './form/image-input/index';
+export * from './form/index';
 export * from './resize/index';
 export * from './substitute/index';
 export * from './overlay/index';

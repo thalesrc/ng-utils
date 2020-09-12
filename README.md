@@ -59,6 +59,32 @@ export class FooComponent {
 
 Additional form components, directives, validators etc.
 
+### Form Disabled
+
+Shorthand to disable/enable all controls in a form.
+
+Usage:
+```html
+<!-- basic usage -->
+<form [disabled]="foo">
+  <input ngModel name="username" />
+  <input ngModel name="email" />
+</form>
+
+<!-- shorthand for disabled: true -->
+<form disabled>
+  <input ngModel name="username" />
+  <input ngModel name="email" />
+</form>
+
+<!-- shorthand for disabled: false -->
+<form disabled="false">
+  <input ngModel name="username" />
+  <input ngModel name="email" />
+</form>
+
+```
+
 ### Image Input
 
 Makes a form component from an img element 
