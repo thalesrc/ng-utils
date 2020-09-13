@@ -29,7 +29,7 @@ export class ImageInputDirective extends Unsubscriber implements ControlValueAcc
 
   @Input()
   @InputStream(ImageInputDirective.TRANSPARENT_URL)
-  public src: Observable<string>;
+  public src: Observable<string> = null;
 
   @Input('changeButton')
   @InputStream()

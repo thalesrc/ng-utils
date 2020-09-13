@@ -12,6 +12,8 @@ export class AppComponent {
   // tslint:disable-next-line:max-line-length
   public image = new BehaviorSubject('');
 
+  public arrayInputs = [];
+
   constructor() {
     // setInterval(this.changeImage.bind(this), 1000);
   }

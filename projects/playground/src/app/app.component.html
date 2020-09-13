@@ -29,3 +29,11 @@
 <textarea resize="both" >
   dsadsa
 </textarea>
+
+<form #arrayForm="ngForm">
+  <div thaArrayModel name="test">
+    <input *ngFor="let item of arrayInputs" formControl thaArrayItem>
+  </div>
+  <button (click)="arrayInputs.push(null)"> Add Input to array</button>
+</form>
+<pre>{{arrayForm.value | json}}</pre>
