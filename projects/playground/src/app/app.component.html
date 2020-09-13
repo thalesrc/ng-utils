@@ -31,9 +31,20 @@
 </textarea>
 
 <form #arrayForm="ngForm">
-  <div thaArrayModel name="test">
-    <input *ngFor="let item of arrayInputs" formControl thaArrayItem>
+  <div thaArrayModel name="foo">
+    <input *ngFor="let item of arrayInputs" formControl [thaArrayItem]="item">
   </div>
   <button (click)="arrayInputs.push(null)"> Add Input to array</button>
 </form>
 <pre>{{arrayForm.value | json}}</pre>
+
+<form>
+  <div formControl thaArrayModel name="list" #list="thaArrayModel">
+    <ng-template ngFor let-item [ngForOf]="arrayInputs">
+      <input formControl [thaArrayItem]="item" #itemModel="thaArrayItem" required>
+      <pre>{{itemModel.value}}</pre>
+    </ng-template>
+  </div>
+</form>
+
+<pre>{{list.errors | json}}</pre>

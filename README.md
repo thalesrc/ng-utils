@@ -59,6 +59,103 @@ export class FooComponent {
 
 Additional form components, directives, validators etc.
 
+### Form Array
+
+Array of models for template driven forms
+
+----------------------------------------------
+
+#### ArrayDirective
+
+* selector: `[thaArrayModel]`
+* exportAs: `thaArrayModel`
+* extends: `NgModel`
+
+#### ArrayItemDirective
+
+* selector: `[thaArrayItem]`
+* exportAs: `thaArrayItem`
+* extends: `NgModel`
+* do not forget to use `formControl` for builtin form controls
+
+----------------------------------------------
+
+Basic Usage:
+```html
+<!-- model: ['foo', 'bar']-->
+
+<form #form="ngForm">
+  <div thaArrayModel name="foo">
+    <input formControl thaArrayItem *ngFor="let item of model">
+  </div>
+</form>
+
+<pre>{{form.value | json}}</pre>
+<!--{ foo: [
+  'input 1 text',
+  'input 2 text',
+]} -->
+```
+
+Set values from `thaArrayModel`:
+```html
+<!-- model: ['foo', 'bar']-->
+
+<form>
+  <div [thaArrayModel]="model" name="list">
+    <input formControl thaArrayItem *ngFor="let item of model">
+  </div>
+</form>
+```
+
+Set values from `thaArrayItem`:
+```html
+<!-- model: ['foo', 'bar']-->
+
+<form>
+  <div thaArrayModel name="list">
+    <input formControl [thaArrayItem]="item" *ngFor="let item of model">
+  </div>
+</form>
+```
+
+Disable all items:
+```html
+<!-- model: ['foo', 'bar']-->
+
+<form>
+  <div thaArrayModel name="list" disabled>
+    <input formControl [thaArrayItem]="item" *ngFor="let item of model">
+  </div>
+</form>
+```
+
+Use `formControl` to get form control classes from angular
+```html
+<!-- model: ['foo', 'bar']-->
+
+<form>
+  <div formControl thaArrayModel name="list"> <!-- class="ng-valid ng-pristine ng-untouched" -->
+    <input formControl [thaArrayItem]="item" *ngFor="let item of model">
+  </div>
+</form>
+```
+
+Template variables can be used
+```html
+<!-- model: ['foo', 'bar']-->
+
+<form>
+  <div formControl thaArrayModel name="list" #list="thaArrayModel">
+    <ng-template ngFor let-item [ngForOf]="model">
+      <input formControl [thaArrayItem]="item" #itemModel="thaArrayItem" required>
+      <pre>{{itemModel.valid}}</pre>
+    </ng-template>
+  </div>
+  <pre>{{ list.errors | json }}</pre>
+</form>
+```
+
 ### Form Disabled
 
 Shorthand to disable/enable all controls in a form.

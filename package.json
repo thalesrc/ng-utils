@@ -8,8 +8,11 @@
     "util",
     "utils",
     "library",
+    "form",
     "image",
     "input",
+    "disable",
+    "array",
     "route",
     "router",
     "data",
@@ -38,6 +41,10 @@
     "e2e": "ng e2e"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thalesrc/ng-utils.git"
+  },
   "private": false,
   "publishConfig": {
     "access": "public"

@@ -2,12 +2,42 @@
   "name": "@thalesrc/ng-utils",
   "version": "0.0.0",
   "description": "A package to store commonly used angular application contents",
-  "keywords": ["angular", "ng", "util", "utils", "library", "image-input"],
+  "keywords": [
+    "angular",
+    "ng",
+    "util",
+    "utils",
+    "library",
+    "form",
+    "image",
+    "input",
+    "disable",
+    "array",
+    "route",
+    "router",
+    "data",
+    "portal",
+    "substitute",
+    "overlay",
+    "modal",
+    "dialog",
+    "stream",
+    "host",
+    "listener",
+    "size",
+    "resize",
+    "change",
+    "animate"
+  ],
   "author": {
     "name": "Ali Şahin Özçelik",
     "email": "alisahinozcelik@gmail.com"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thalesrc/ng-utils.git"
+  },
   "private": false,
   "publishConfig": {
     "access": "public"
