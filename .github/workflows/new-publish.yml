@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: node .\scripts\configure-version.js v8
+      - run: node ./scripts/configure-version.js v8
       - run: npm i
       - run: npm run build
       - run: cp ./README.md ./dist/ng-utils
@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: node .\scripts\configure-version.js v9
+      - run: node ./scripts/configure-version.js v9
       - run: npm i
       - run: npm run build
       - run: cp ./README.md ./dist/ng-utils
