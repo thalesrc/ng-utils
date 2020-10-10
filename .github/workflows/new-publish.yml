@@ -1,0 +1,42 @@
+name: Publish Library
+
+on:
+  push:
+    branches:
+      - "refactor/ng-versioning"
+
+jobs:
+  prepare-v8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set env
+        run: echo ::set-env name=PACKAGE_VERSION::$(echo ${GITHUB_REF:10})
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: node .\scripts\configure-version.js v8
+      - run: npm i
+      - run: npm run build
+      - run: cp ./README.md ./dist/ng-utils
+      # - run: cd ./dist/ng-utils && npm run version-update && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+  prepare-v9:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set env
+        run: echo ::set-env name=PACKAGE_VERSION::$(echo ${GITHUB_REF:10})
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: node .\scripts\configure-version.js v9
+      - run: npm i
+      - run: npm run build
+      - run: cp ./README.md ./dist/ng-utils
+      # - run: cd ./dist/ng-utils && npm run version-update && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
