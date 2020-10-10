@@ -63,3 +63,7 @@ jobs:
         run: cd ./version-9 && npm publish --tag v9-lts
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Publish Version 9 as Latest
+        run: cd ./version-9 && npm publish --tag latest
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
