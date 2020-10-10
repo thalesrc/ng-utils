@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: version-8
-          path: ./dist/ng-utils/$FILE_NAME
+          path: ./dist/ng-utils/${{FILE_NAME}}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
   prepare-v9:
@@ -49,6 +49,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: version-9
-          path: ./dist/ng-utils/$FILE_NAME
+          path: ./dist/ng-utils/${{FILE_NAME}}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
