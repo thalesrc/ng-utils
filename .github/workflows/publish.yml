@@ -1,23 +1,65 @@
-name: Npm Package
+name: Publish Library
 
 on:
   release:
     types: [created]
 
 jobs:
-  publish-npm:
+  prepare-v8:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Set env
-        run: echo ::set-env name=PACKAGE_VERSION::$(echo ${GITHUB_REF:10})
+        run: echo "PACKAGE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm install
+      - run: node ./scripts/configure-version.js v8
+      - run: node ./scripts/set-package-version.js v8
+      - run: npm i
       - run: npm run build
       - run: cp ./README.md ./dist/ng-utils
-      - run: cd ./dist/ng-utils && npm run version-update && npm publish
+      - name: Upload Package Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: version-8
+          path: ./dist/ng-utils
+
+  prepare-v9:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set env
+        run: echo "PACKAGE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: node ./scripts/configure-version.js v9
+      - run: node ./scripts/set-package-version.js v9
+      - run: npm i
+      - run: npm run build
+      - run: cp ./README.md ./dist/ng-utils
+      - name: Upload Package Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: version-9
+          path: ./dist/ng-utils
+  publish:
+    runs-on: ubuntu-latest
+    needs: [prepare-v8, prepare-v9]
+    steps:
+      - uses: actions/download-artifact@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: Publish Version 8
+        run: cd ./version-8 && npm publish --tag 8.x.x
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Publish Version 9
+        run: cd ./version-9 && npm publish --tag 9.x.x
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
