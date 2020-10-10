@@ -7,9 +7,7 @@ const [,, buildVersion] = process.argv;
 //   throw 'Version is not defined';
 // }
 
-if (!PACKAGE_VERSION) {
-  PACKAGE_VERSION = '3.4.5';
-}
+PACKAGE_VERSION = '3.4.5';
 
 const [major, minor, patch] = PACKAGE_VERSION.split('.');
 

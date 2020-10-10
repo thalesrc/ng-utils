@@ -19,36 +19,36 @@ jobs:
       - run: node ./scripts/configure-version.js v8
       - run: echo "FILE_NAME=$(node ./scripts/set-package-version.js v8)" >> $GITHUB_ENV
       - run: npm i
-      # - run: npm run build
-      # - run: cp ./README.md ./dist/ng-utils
-      # - run: cd ./dist/ng-utils && npm pack
-      # - name: Upload Package Artifact
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: version-8
-      #     path: "./dist/ng-utils/${FILE_NAME}"
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-  # prepare-v9:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - name: Set env
-  #       run: echo "PACKAGE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #         registry-url: https://registry.npmjs.org/
-  #     - run: node ./scripts/configure-version.js v9
-  #     - run: echo "FILE_NAME=$(node ./scripts/set-package-version.js v9)" >> $GITHUB_ENV
-  #     - run: npm i
-  #     - run: npm run build
-  #     - run: cp ./README.md ./dist/ng-utils
-  #     - run: cd ./dist/ng-utils && npm pack
-  #     - name: Upload Package Artifact
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: version-9
-  #         path: "./dist/ng-utils/${FILE_NAME}"
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm run build
+      - run: cp ./README.md ./dist/ng-utils
+      - run: cd ./dist/ng-utils && npm pack
+      - name: Upload Package Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: version-8
+          path: "./dist/ng-utils/${FILE_NAME}"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+  prepare-v9:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set env
+        run: echo "PACKAGE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: node ./scripts/configure-version.js v9
+      - run: echo "FILE_NAME=$(node ./scripts/set-package-version.js v9)" >> $GITHUB_ENV
+      - run: npm i
+      - run: npm run build
+      - run: cp ./README.md ./dist/ng-utils
+      - run: cd ./dist/ng-utils && npm pack
+      - name: Upload Package Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: version-9
+          path: "./dist/ng-utils/${FILE_NAME}"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
