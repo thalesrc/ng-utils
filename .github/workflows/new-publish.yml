@@ -17,7 +17,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: node ./scripts/configure-version.js v8
-      - run: echo "FILE_NAME=${node ./scripts/set-package-version.js v8}" >> $GITHUB_ENV
+      - run: echo "FILE_NAME=$(node ./scripts/set-package-version.js v8)" >> $GITHUB_ENV
       - run: npm i
       - run: npm run build
       - run: cp ./README.md ./dist/ng-utils
