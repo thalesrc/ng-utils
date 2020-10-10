@@ -56,10 +56,10 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - name: Publish Version 8
-        run: cd ./version-8 && npm publish --tag 8.x.x
+        run: cd ./version-8 && npm publish --tag v8-lts
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: Publish Version 9
-        run: cd ./version-9 && npm publish --tag 9.x.x
+        run: cd ./version-9 && npm publish --tag v9-lts
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
