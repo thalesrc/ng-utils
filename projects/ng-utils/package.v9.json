@@ -1,0 +1,15 @@
+{
+  "peerDependencies": {
+    "@angular/animations": "^9.1.12",
+    "@angular/common": "^9.1.12",
+    "@angular/core": "^9.1.12",
+    "@angular/forms": "^9.1.12",
+    "@angular/cdk": "^9.2.4",
+    "@angular/platform-browser": "^9.1.12",
+    "@thalesrc/resize-manager": "^0.3.2",
+    "rxjs": "~6.5.4"
+  },
+  "dependencies": {
+    "@thalesrc/js-utils": "^2.5.1"
+  }
+}

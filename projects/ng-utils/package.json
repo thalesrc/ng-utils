@@ -56,6 +56,6 @@
     "rxjs": "^6.4.0"
   },
   "dependencies": {
-    "@thalesrc/js-utils": "^2.2.0"
+    "@thalesrc/js-utils": "^2.5.1"
   }
 }
