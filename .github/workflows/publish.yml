@@ -63,6 +63,6 @@ jobs:
         run: cd ./version-9 && npm publish --tag v9-lts
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - run: npm dist-tag add @thalesrc/ng-utils@v9-lts latest
+      - run: cd ./version-9 && npm dist-tag add @thalesrc/ng-utils@$(perl -ne 'print "$1" if /"version":\s?"(.*?)"/' ./package.json) latest
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
