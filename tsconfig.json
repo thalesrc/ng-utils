@@ -24,9 +24,6 @@
       ],
       "@ng-utils/*": [
         "projects/ng-utils/*"
-      ],
-      "@utils": [
-        "projects/ng-utils/utils/src/index.ts"
       ]
     }
   }

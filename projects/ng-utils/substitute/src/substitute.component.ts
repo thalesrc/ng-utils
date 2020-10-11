@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { InputStream, shareLast } from '@utils';
+import { InputStream, shareLast } from '../../utils.entry';
 import { Observable } from 'rxjs';
 import { SubstituteService } from './substitute.service';
 import { combineLatest, filter, map, debounceTime } from 'rxjs/operators';
