@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
-import { Unsubscriber, InputStream } from '../../utils.entry';
+import { Unsubscriber, InputStream } from '../../utils/src';
 import { ResizeService } from './resize.service';
 import { Observable } from 'rxjs';
 import { combineLatest, map, distinctUntilChanged, takeUntil } from 'rxjs/operators';

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { difference } from '@thalesrc/js-utils/legacy';
 import { combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
-import { InputStream, Unsubscriber } from '../../../utils.entry';
+import { InputStream, Unsubscriber } from '../../../utils/src';
 
 @Directive({
   // tslint:disable-next-line:directive-selector

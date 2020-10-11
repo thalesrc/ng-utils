@@ -9,7 +9,7 @@ import { distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators'
 
 import { ArrayValueAccessor } from './array-value-accessor';
 import { FormArrayItemDirective } from './array-item.directive';
-import { InputStream } from '../../../utils.entry';
+import { InputStream } from '../../../utils/src';
 
 @Directive({
   selector: '[thaArrayModel]',

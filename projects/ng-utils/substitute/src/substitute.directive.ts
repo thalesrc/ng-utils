@@ -1,6 +1,6 @@
 import { Directive, TemplateRef, OnDestroy, Input } from '@angular/core';
 import { SubstituteService } from './substitute.service';
-import { InputStream, Unsubscriber } from '../../utils.entry';
+import { InputStream, Unsubscriber } from '../../utils/src';
 import { Observable } from 'rxjs';
 import { pairwise, takeUntil, first } from 'rxjs/operators';
 
