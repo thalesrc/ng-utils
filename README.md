@@ -6,6 +6,14 @@ A package to store commonly used angular application contents
 [![npm](https://img.shields.io/npm/dw/@thalesrc/ng-utils.svg)](https://www.npmjs.com/package/@thalesrc/ng-utils)
 [![npm](https://img.shields.io/npm/l/@thalesrc/ng-utils.svg)](https://github.com/thalesrc/ng-utils/blob/master/LICENSE)
 
+## Installation
+
+| Angular Version | Command                           |
+|-----------------|-----------------------------------|
+| Version 8       | `npm i @thalesrc/ng-utils@v8-lts` |
+| Version 9       | `npm i @thalesrc/ng-utils@v9-lts` |
+
+
 ## Advanced Route
 
 Advanced route implementations
