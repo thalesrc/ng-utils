@@ -2,10 +2,9 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ng-utils",
   "lib": {
-    "entryFile": "index.ts"
+    "entryFile": "main.entry.ts"
   },
   "whitelistedNonPeerDependencies": [
     "@thalesrc/js-utils"
-  ],
-  "keepLifecycleScripts": true
+  ]
 }

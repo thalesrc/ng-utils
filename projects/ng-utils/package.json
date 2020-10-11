@@ -42,9 +42,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "version-update": "npm version $PACKAGE_VERSION --no-git-tag-version"
-  },
   "peerDependencies": {
     "@angular/animations": "~8.0.3",
     "@angular/common": "^8.0.3",
