@@ -1,1 +1,1 @@
-export * from './advanced-route/src';
+export * from './advanced-route/src/index';

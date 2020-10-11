@@ -1,1 +1,1 @@
-export * from './resize/src';
+export * from './resize/src/index';

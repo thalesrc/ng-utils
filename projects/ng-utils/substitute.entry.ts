@@ -1,1 +1,1 @@
-export * from './substitute/src';
+export * from './substitute/src/index';
