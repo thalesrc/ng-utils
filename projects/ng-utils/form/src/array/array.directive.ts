@@ -23,7 +23,7 @@ export class FormArrayDirective extends NgModel implements AfterContentInit, OnD
 
   public valueAccessor: ArrayValueAccessor;
 
-  @ContentChildren(FormArrayItemDirective)
+  @ContentChildren(FormArrayItemDirective, {descendants: true})
   private items: QueryList<FormArrayItemDirective>;
 
   @Input()

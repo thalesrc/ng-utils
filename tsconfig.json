@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@ng-utils": [
-        "projects/ng-utils/src/public-api.ts"
+        "projects/ng-utils/index.ts"
       ],
       "@ng-utils/*": [
         "projects/ng-utils/*"

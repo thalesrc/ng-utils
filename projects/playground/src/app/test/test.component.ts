@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { InputStream } from 'projects/ng-utils/src/utils/input-stream';
+import { InputStream } from '@ng-utils';
 import { Observable } from 'rxjs';
 
 @Component({

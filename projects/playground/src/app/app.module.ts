@@ -3,10 +3,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ImageInputModule, SubstituteModule, OverlayModule, ResizeModule } from '@ng-utils';
+import { ImageInputModule, SubstituteModule, OverlayModule, ResizeModule, ArrayModule } from '@ng-utils';
 import { FormsModule } from '@angular/forms';
 import { TestComponent } from './test/test.component';
-import { ArrayModule } from 'projects/ng-utils/src/form/array';
 
 @NgModule({
   declarations: [
