@@ -1,1 +1,1 @@
-export * from './form/src/index';
+export * from './form/src';
