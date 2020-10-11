@@ -5,27 +5,22 @@ import { ImageInputModule } from './image-input';
 import { FormDisabledDirective } from './directives';
 import { ArrayModule } from './array';
 
-const MODULES = [
-  CommonModule,
-  FormsModule,
-  ImageInputModule,
-  ArrayModule,
-];
-
-const DIRECTIVES = [
-  FormDisabledDirective
-];
-
 @NgModule({
   imports: [
-    ...MODULES,
+    CommonModule,
+    FormsModule,
+    ImageInputModule,
+    ArrayModule,
   ],
   declarations: [
-    ...DIRECTIVES,
+    FormDisabledDirective
   ],
   exports: [
-    ...MODULES,
-    ...DIRECTIVES
+    CommonModule,
+    FormsModule,
+    ImageInputModule,
+    ArrayModule,
+    FormDisabledDirective
   ]
 })
 export class FormModule { }
