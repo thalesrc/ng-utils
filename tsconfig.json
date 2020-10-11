@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@ng-utils": [
-        "projects/ng-utils/index.ts"
+        "projects/ng-utils/main.entry.ts"
       ],
       "@ng-utils/*": [
         "projects/ng-utils/*"
