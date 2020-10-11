@@ -1,9 +1,8 @@
 import { Directive, TemplateRef, OnDestroy, Input } from '@angular/core';
 import { SubstituteService } from './substitute.service';
-import { InputStream } from '../utils/input-stream';
+import { InputStream, Unsubscriber } from '@utils';
 import { Observable } from 'rxjs';
 import { pairwise, takeUntil, first } from 'rxjs/operators';
-import { Unsubscriber } from '../utils/unsubscriber';
 
 @Directive({
   selector: '[thaSubstitute]'

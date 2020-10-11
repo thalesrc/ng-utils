@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { InputStream } from '../utils/input-stream';
+import { InputStream, shareLast } from '@utils';
 import { Observable } from 'rxjs';
 import { SubstituteService } from './substitute.service';
 import { combineLatest, filter, map, debounceTime } from 'rxjs/operators';
-import { shareLast } from '../utils/share-last';
 
 @Component({
   selector: 'tha-substitute',
@@ -13,7 +12,7 @@ import { shareLast } from '../utils/share-last';
 export class SubstituteComponent {
   @Input('thaSubstituteScope')
   @InputStream()
-  public scope: Observable<any>;
+  public scope: Observable<any> = null;
 
   public template$ = this.service.templates$.pipe(
     debounceTime(50),
