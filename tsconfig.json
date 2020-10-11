@@ -23,7 +23,10 @@
         "projects/ng-utils/src/public-api.ts"
       ],
       "@ng-utils/*": [
-        "projects/ng-utils/src/lib/*"
+        "projects/ng-utils/*"
+      ],
+      "@utils": [
+        "projects/ng-utils/utils/src/index.ts"
       ]
     }
   }

@@ -5,7 +5,7 @@ import { isTruthy } from '@thalesrc/js-utils/is-truthy';
 import { deepest } from '@thalesrc/js-utils/object/deepest';
 import { Observable } from 'rxjs';
 import { filter, map, startWith } from 'rxjs/operators';
-import { shareLast } from '../utils/share-last';
+import { shareLast } from '@utils';
 
 
 @Injectable({

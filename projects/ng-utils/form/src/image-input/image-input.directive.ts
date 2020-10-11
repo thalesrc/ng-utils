@@ -3,10 +3,7 @@ import { NG_VALIDATORS, NG_VALUE_ACCESSOR, ControlValueAccessor, Validator } fro
 import { noop } from '@thalesrc/js-utils/function/noop';
 import { BehaviorSubject, combineLatest, fromEvent, merge, Observable } from 'rxjs';
 import { map, distinctUntilChanged, first, switchMap, filter, takeUntil } from 'rxjs/operators';
-import { Unsubscriber } from '../../utils/unsubscriber';
-import { shareLast } from '../../utils/share-last';
-import { InputStream } from '../../utils/input-stream';
-import { ListenerStream } from '../../utils/listener-stream';
+import { Unsubscriber, shareLast, InputStream, ListenerStream } from '@utils';
 
 @Directive({
   // tslint:disable-next-line:directive-selector

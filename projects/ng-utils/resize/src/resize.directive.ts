@@ -1,7 +1,6 @@
 import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
-import { Unsubscriber } from '../utils/unsubscriber';
+import { Unsubscriber, InputStream } from '@utils';
 import { ResizeService } from './resize.service';
-import { InputStream } from '../utils/input-stream';
 import { Observable } from 'rxjs';
 import { combineLatest, map, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { ResizeEvent } from '@thalesrc/resize-manager';
