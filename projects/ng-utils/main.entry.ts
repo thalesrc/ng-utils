@@ -1,7 +1,7 @@
-export * from './advanced-route/src/index';
-export * from './form/src';
-export * from './resize/src/index';
-export * from './substitute/src/index';
-export * from './overlay/src/index';
+export * from './advanced-route/index';
+export * from './form/index';
+export * from './overlay/index';
+export * from './resize/index';
+export * from './substitute/index';
 
-export {InputStream, ListenerStream, Unsubscriber} from './utils/src';
+export {InputStream, ListenerStream, Unsubscriber} from './utils';

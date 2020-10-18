@@ -1,1 +1,1 @@
-export * from './form/src';
+export * from './form';

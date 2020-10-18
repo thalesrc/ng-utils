@@ -1,1 +1,1 @@
-export * from './overlay/src/index';
+export * from './overlay/index';
