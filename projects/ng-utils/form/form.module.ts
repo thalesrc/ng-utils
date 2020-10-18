@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ImageInputModule } from './image-input';
-import { FormDisabledDirective } from './directives';
-import { ArrayModule } from './array';
+import { ImageInputModule } from './image-input/index';
+import { FormDisabledDirective } from './directives/index';
+import { ArrayModule } from './array/index';
 
 @NgModule({
   imports: [

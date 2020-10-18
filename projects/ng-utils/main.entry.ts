@@ -1,7 +1,7 @@
-export * from './advanced-route/index';
-export * from './form/index';
-export * from './overlay/index';
-export * from './resize/index';
-export * from './substitute/index';
+export * from '@thalesrc/ng-utils/advanced-route';
+export * from '@thalesrc/ng-utils/form';
+export * from '@thalesrc/ng-utils/overlay';
+export * from '@thalesrc/ng-utils/resize';
+export * from '@thalesrc/ng-utils/substitute';
 
-export {InputStream, ListenerStream, Unsubscriber} from './utils';
+export {InputStream, ListenerStream, Unsubscriber} from '@thalesrc/ng-utils/utils';
