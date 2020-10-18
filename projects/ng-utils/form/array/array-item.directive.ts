@@ -5,7 +5,7 @@ import {
 } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { InputStream } from '../../utils';
+import { InputStream } from '@thalesrc/ng-utils/utils';
 
 import { setUpControl } from './form-array-utils';
 

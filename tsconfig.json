@@ -24,6 +24,9 @@
       ],
       "@ng-utils/*": [
         "projects/ng-utils/*"
+      ],
+      "@thalesrc/ng-utils/utils": [
+        "projects/ng-utils/utils/index.ts"
       ]
     }
   }

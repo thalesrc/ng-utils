@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { AnimationBuilder, AnimationFactory, style, animate } from '@angular/animations';
-import { Unsubscriber } from '../utils';
+import { Unsubscriber } from '@thalesrc/ng-utils/utils';
 import { ResizeService } from './resize.service';
 import { of, merge, interval } from 'rxjs';
 import { distinctUntilChanged, takeUntil, mapTo, exhaustMap, take, filter, pairwise } from 'rxjs/operators';
