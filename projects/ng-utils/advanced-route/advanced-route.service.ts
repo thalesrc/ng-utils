@@ -54,6 +54,7 @@ export class AdvancedRouteService {
     map(routes => routes.map(({snapshot}) => snapshot)),
     map(routes => routes.filter(isTruthy)),
     map(routes => routes.map(({data}) => data)),
+    map(datas => datas.reduce((obj, next) => ({...obj, ...next}), {})),
     shareLast()
   );
 
