@@ -1,0 +1,30 @@
+:host {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to top, rgba($color: black, $alpha: .5), rgba($color: black, $alpha: .25));
+  animation: blocker-default-animation 1s ease-in 0 infinite normal forwards;
+}
+
+img {
+  max-width: 25%;
+  max-height: 25%;
+  opacity: .75;
+}
+
+@keyframes blocker-default-animation {
+  from {
+    opacity: 0;
+    transform: scale(2);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -4,6 +4,7 @@
     "codelyzer"
   ],
   "rules": {
+    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-module", "check-separator", "check-rest-spread", "check-type", "check-type-operator", "check-preblock", "check-postbrace"],
     "only-arrow-functions": false,
     "no-angle-bracket-type-assertion": false,
     "array-type": false,
