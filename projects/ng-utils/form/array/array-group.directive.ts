@@ -14,7 +14,8 @@ declare const ngDevMode: any;
     { provide: NgControl, useExisting: forwardRef(() => ArrayGroupDirective)},
     { provide: ControlContainer, useExisting: forwardRef(() => ArrayGroupDirective) },
     { provide: ArrayChild, useExisting: forwardRef(() => ArrayGroupDirective) }
-  ]
+  ],
+  exportAs: 'thaArrayGroup'
 })
 export class ArrayGroupDirective extends NgModelGroup implements ArrayChild, OnInit {
   // tslint:disable-next-line:variable-name
