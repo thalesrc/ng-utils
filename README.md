@@ -69,7 +69,7 @@ Additional form components, directives, validators etc.
 
 ### Form Array
 
-Array of models for template driven forms
+Form Array directives for template driven forms
 
 ----------------------------------------------
 
@@ -85,6 +85,12 @@ Array of models for template driven forms
 * exportAs: `thaArrayItem`
 * extends: `NgModel`
 * do not forget to use `formControl` for builtin form controls
+
+#### ArrayGroupDirective
+
+* selector: `[thaArrayGroup]`
+* exportAs: `thaArrayGroup`
+* extends: `NgModelGroup`
 
 ----------------------------------------------
 
@@ -161,6 +167,22 @@ Template variables can be used
     </ng-template>
   </div>
   <pre>{{ list.errors | json }}</pre>
+</form>
+```
+
+Create groups like `ngModelGroup` in an array section
+```html
+<form>
+  <div thaArrayModel name="list">
+    <div thaArrayGroup>
+      <input name="firstname" ngModel required>
+      <input name="lastname" ngModel required>
+    </div>
+    <div thaArrayGroup>
+      <input name="firstname" ngModel required>
+      <input name="lastname" ngModel required>
+    </div>
+  </div>
 </form>
 ```
 

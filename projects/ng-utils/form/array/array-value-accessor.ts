@@ -1,31 +1,43 @@
-import { ControlValueAccessor, FormArray } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { noop } from '@thalesrc/js-utils/legacy';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+
+class ExtendedFormArray extends FormArray implements FormGroup, Omit<FormControl, '_applyFormState'> {
+  public controls: any;
+  public setControl: any;
+  // tslint:disable-next-line:variable-name
+  private _applyFormState: any;
+
+  public registerControl(name: string, control: AbstractControl) {
+    return control;
+  }
+
+  public addControl() {
+  }
+
+  public removeControl() {
+  }
+
+  public contains(name: string): boolean {
+    return true;
+  }
+
+  public registerOnChange() {
+  }
+
+  public registerOnDisabledChange() {
+  }
+}
 
 export class ArrayValueAccessor implements ControlValueAccessor {
   private onChange: (v: any) => void = noop;
   private onTouched = noop;
-  public array = new FormArray([]);
+  public array = new ExtendedFormArray([]);
   public destroy$ = new Subject();
 
   public statusChanges$ = new BehaviorSubject(this.array);
-
-  constructor() {
-    this.array.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
-      this.onChange(value);
-    });
-
-    this.array.statusChanges.pipe(takeUntil(this.destroy$)).subscribe(status => {
-      if (status === 'VALID') {
-        this.array.setErrors(null, {emitEvent: false});
-      } else {
-        this.array.setErrors(this.array.controls.map(({errors}) => errors), {emitEvent: false});
-      }
-
-      this.statusChanges$.next(this.array);
-    });
-  }
 
   public writeValue(value: any) {
     value = value || [];

@@ -48,3 +48,25 @@
 </form>
 
 <pre>{{list.errors | json}}</pre>
+
+<form #group="ngForm">
+  <div thaArrayModel name="foo">
+    <ng-template ngFor let-item [ngForOf]="arrayInputs">
+      <div thaArrayGroup>
+        <div thaArrayModel name="bar">
+          <input formControl thaArrayItem required>
+          <input formControl thaArrayItem required>
+        </div>
+      </div>
+      <div thaArrayGroup>
+        <div thaArrayModel name="bar">
+          <input formControl thaArrayItem required>
+          <input formControl thaArrayItem required>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</form>
+
+<pre>{{group.value | json}}</pre>
+<pre>{{group.valid | json}}</pre>
