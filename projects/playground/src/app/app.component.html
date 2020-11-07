@@ -54,7 +54,14 @@
     <ng-template ngFor let-item [ngForOf]="arrayInputs">
       <div thaArrayGroup>
         <div thaArrayModel name="bar">
-          <input name="baz" thaArrayItem formControl>
+          <input formControl thaArrayItem required>
+          <input formControl thaArrayItem required>
+        </div>
+      </div>
+      <div thaArrayGroup>
+        <div thaArrayModel name="bar">
+          <input formControl thaArrayItem required>
+          <input formControl thaArrayItem required>
         </div>
       </div>
     </ng-template>
@@ -62,3 +69,4 @@
 </form>
 
 <pre>{{group.value | json}}</pre>
+<pre>{{group.valid | json}}</pre>

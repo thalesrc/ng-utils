@@ -14,12 +14,12 @@ import { AbstractArrayDirective } from './abstract-array.directive';
 @Directive({
   selector: '[thaArrayItem]',
   providers: [
-    {provide: NgControl, useExisting: forwardRef(() => FormArrayItemDirective)},
-    {provide: ArrayChild, useExisting: forwardRef(() => FormArrayItemDirective)}
+    {provide: NgControl, useExisting: forwardRef(() => ArrayItemDirective)},
+    {provide: ArrayChild, useExisting: forwardRef(() => ArrayItemDirective)}
   ],
   exportAs: 'thaArrayItem'
 })
-export class FormArrayItemDirective extends NgModel implements OnInit, OnDestroy, ArrayChild {
+export class ArrayItemDirective extends NgModel implements OnInit, OnDestroy, ArrayChild {
   private onDestroy$ = new Subject();
 
   @Input('thaArrayItem')

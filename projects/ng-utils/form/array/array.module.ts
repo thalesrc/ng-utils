@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ArrayGroupDirective } from './array-group.directive';
-import { FormArrayItemDirective } from './array-item.directive';
-import { FormArrayDirective } from './array.directive';
+import { ArrayItemDirective } from './array-item.directive';
+import { ArrayDirective } from './array.directive';
 
 @NgModule({
   declarations: [
-    FormArrayDirective,
-    FormArrayItemDirective,
+    ArrayDirective,
+    ArrayItemDirective,
     ArrayGroupDirective,
   ],
   imports: [
     FormsModule
   ],
   exports: [
-    FormArrayDirective,
-    FormArrayItemDirective,
+    ArrayDirective,
+    ArrayItemDirective,
     ArrayGroupDirective,
   ]
 })

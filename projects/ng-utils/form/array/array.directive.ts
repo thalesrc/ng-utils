@@ -16,13 +16,13 @@ import { AbstractArrayDirective } from './abstract-array.directive';
 @Directive({
   selector: '[thaArrayModel]',
   providers: [
-    {provide: NgControl, useExisting: forwardRef(() => FormArrayDirective)},
-    {provide: ControlContainer, useExisting: forwardRef(() => FormArrayDirective)},
-    {provide: AbstractArrayDirective, useExisting: forwardRef(() => FormArrayDirective)}
+    {provide: NgControl, useExisting: forwardRef(() => ArrayDirective)},
+    {provide: ControlContainer, useExisting: forwardRef(() => ArrayDirective)},
+    {provide: AbstractArrayDirective, useExisting: forwardRef(() => ArrayDirective)}
   ],
   exportAs: 'thaArrayModel'
 })
-export class FormArrayDirective extends NgModel implements AfterContentInit, OnDestroy, ControlContainer, AbstractArrayDirective {
+export class ArrayDirective extends NgModel implements AfterContentInit, OnDestroy, ControlContainer, AbstractArrayDirective {
   private onDestroy$ = new Subject();
 
   public valueAccessor: ArrayValueAccessor;

@@ -1,6 +1,7 @@
-import { Directive, forwardRef, Host, Inject, OnInit, Optional, Self, SkipSelf } from '@angular/core';
+import { Directive, forwardRef, Host, Inject, OnInit, Optional, Self } from '@angular/core';
 import {
-  AsyncValidator, AsyncValidatorFn, ControlContainer, FormGroup, NgModelGroup, NG_ASYNC_VALIDATORS, NG_VALIDATORS, Validator, ValidatorFn
+  AsyncValidator, AsyncValidatorFn, ControlContainer, FormGroup, NgControl, NgModelGroup, NG_ASYNC_VALIDATORS, NG_VALIDATORS, Validator,
+  ValidatorFn
 } from '@angular/forms';
 import { AbstractArrayDirective } from './abstract-array.directive';
 import { ArrayChild } from './array-child';
@@ -10,6 +11,7 @@ declare const ngDevMode: any;
 @Directive({
   selector: '[thaArrayGroup]',
   providers: [
+    { provide: NgControl, useExisting: forwardRef(() => ArrayGroupDirective)},
     { provide: ControlContainer, useExisting: forwardRef(() => ArrayGroupDirective) },
     { provide: ArrayChild, useExisting: forwardRef(() => ArrayGroupDirective) }
   ]
@@ -42,8 +44,8 @@ export class ArrayGroupDirective extends NgModelGroup implements ArrayChild, OnI
   }
 
   protected _checkParentType(): void {
-    import('./array.directive').then(({FormArrayDirective}) => {
-      if (!(this.__parent instanceof FormArrayDirective) && (typeof ngDevMode === 'undefined' || ngDevMode)) {
+    import('./array.directive').then(({ArrayDirective}) => {
+      if (!(this.__parent instanceof ArrayDirective) && (typeof ngDevMode === 'undefined' || ngDevMode)) {
         throw new Error('`thaArrayGroup` should be used in a `thaArray` context');
       }
     });
