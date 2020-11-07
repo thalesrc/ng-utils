@@ -45,10 +45,5 @@ export class ArrayGroupDirective extends NgModelGroup implements ArrayChild, OnI
   }
 
   protected _checkParentType(): void {
-    import('./array.directive').then(({ArrayDirective}) => {
-      if (!(this.__parent instanceof ArrayDirective) && (typeof ngDevMode === 'undefined' || ngDevMode)) {
-        throw new Error('`thaArrayGroup` should be used in a `thaArray` context');
-      }
-    });
   }
 }
