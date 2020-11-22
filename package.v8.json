@@ -9,7 +9,7 @@
     "@angular/platform-browser": "~8.0.3",
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
-    "@thalesrc/js-utils": "^2.5.1",
+    "@thalesrc/js-utils": "^2.8.1-legacy",
     "@thalesrc/resize-manager": "^0.3.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",

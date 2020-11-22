@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { OverlayDirective } from '../overlay.directive';
-import { OpenPromise } from '@thalesrc/js-utils/legacy';
+import { OpenPromise } from '@thalesrc/js-utils';
 import { InputStream } from '@thalesrc/ng-utils/utils';
 import { Observable, EMPTY } from 'rxjs';
 import { map, switchMap, pluck, first } from 'rxjs/operators';
@@ -49,7 +49,7 @@ export class OverlayComponent implements AfterViewInit {
   }
 
   public async open(): Promise<any> {
-    await this.onReady.promise;
+    await this.onReady;
     await this.directive.open();
     this.opened.emit();
 
@@ -57,7 +57,7 @@ export class OverlayComponent implements AfterViewInit {
   }
 
   public async close(event: any = false): Promise<void> {
-    await this.onReady.promise;
+    await this.onReady;
     this.directive.close();
     this.closed.emit(event);
   }
