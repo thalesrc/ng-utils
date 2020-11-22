@@ -285,6 +285,43 @@ export class FooModule { }
 </tha-overlay>
 ```
 
+## Phantom Platform
+
+An abstract platform with its components and providers
+
+### PhantomPlatformLocation
+
+A platform location provider class to use the Router without manipulation or reading the url
+
+* extends: `PlatformLocation`
+
+Usage:
+```typescript
+import { PlatformLocation } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { Route, RouterModule } from '@angular/router';
+import { PhantomPlatformLocation } from '@thalesrc/ng-utils/phantom-platform';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(ROUTES),
+    ...
+  ],
+  providers: [
+    ...
+    { provide: PlatformLocation, useClass: PhantomPlatformLocation },
+  ],
+  bootstrap: [
+    ...
+  ]
+})
+export class AppModule { }
+```
 ## Resize
 
 Observe element's size changes, animate their size, etc..
