@@ -10,6 +10,6 @@
     "rxjs": "~6.5.4"
   },
   "dependencies": {
-    "@thalesrc/js-utils": "^2.8.3"
+    "@thalesrc/js-utils": "^2.9.1"
   }
 }
