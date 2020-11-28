@@ -1,5 +1,5 @@
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup } from '@angular/forms';
-import { noop } from '@thalesrc/js-utils';
+import { noop } from '@thalesrc/js-utils/function/noop';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;

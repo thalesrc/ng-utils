@@ -1,7 +1,7 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { ElementRef, EmbeddedViewRef, Injectable } from '@angular/core';
-import { defer } from '@thalesrc/js-utils';
+import { defer } from '@thalesrc/js-utils/function/defer';
 import { Observable } from 'rxjs';
 
 import { OverlayDirective } from './overlay.directive';

@@ -1,6 +1,6 @@
 import { Directive, Host, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { difference } from '@thalesrc/js-utils';
+import { difference } from '@thalesrc/js-utils/array/difference';
 import { combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 import { InputStream, Unsubscriber } from '@thalesrc/ng-utils/utils';

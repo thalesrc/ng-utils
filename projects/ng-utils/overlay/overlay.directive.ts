@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, OnDestroy, Output, TemplateRef, ViewContainerRef } from '@angular/core';
-import { defer } from '@thalesrc/js-utils';
+import { defer } from '@thalesrc/js-utils/function/defer';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { OverlayService } from './overlay.service';

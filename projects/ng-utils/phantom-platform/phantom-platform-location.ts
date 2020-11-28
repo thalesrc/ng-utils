@@ -1,5 +1,7 @@
 import { LocationChangeListener, PlatformLocation } from '@angular/common';
-import { minMax, noop, replace } from '@thalesrc/js-utils';
+import { minMax } from '@thalesrc/js-utils/math/min-max';
+import { noop } from '@thalesrc/js-utils/function/noop';
+import { replace } from '@thalesrc/js-utils/array/replace';
 import { HASHCHANGE_EVENT_TYPE, POPSTATE_EVENT_TYPE } from './history-event-types';
 import { HistoryItem } from './history-item.interface';
 

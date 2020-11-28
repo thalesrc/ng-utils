@@ -6,7 +6,7 @@ import { of, merge, interval } from 'rxjs';
 import { distinctUntilChanged, takeUntil, mapTo, exhaustMap, take, filter, pairwise } from 'rxjs/operators';
 import { ResizeEvent } from '@thalesrc/resize-manager';
 import { ResizeMode } from './resize-mode';
-import { isTruthy } from '@thalesrc/js-utils';
+import { isTruthy } from '@thalesrc/js-utils/is-truthy';
 
 @Directive({
   selector: '[thaAnimateResize]',

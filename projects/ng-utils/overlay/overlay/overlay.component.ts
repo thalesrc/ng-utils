@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { OverlayDirective } from '../overlay.directive';
-import { OpenPromise } from '@thalesrc/js-utils';
+import { OpenPromise } from '@thalesrc/js-utils/open-promise';
 import { InputStream } from '@thalesrc/ng-utils/utils';
 import { Observable, EMPTY } from 'rxjs';
 import { map, switchMap, pluck, first } from 'rxjs/operators';
