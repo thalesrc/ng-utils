@@ -1,4 +1,5 @@
 import { LocationChangeListener, PlatformLocation } from '@angular/common';
+import { Injectable } from '@angular/core';
 import { minMax } from '@thalesrc/js-utils/math/min-max';
 import { noop } from '@thalesrc/js-utils/function/noop';
 import { replace } from '@thalesrc/js-utils/array/replace';
@@ -10,6 +11,7 @@ import { HistoryItem } from './history-item.interface';
  *
  * A platform location provider class to use Router without manipulation or reading url
  */
+@Injectable()
 export class PhantomPlatformLocation extends PlatformLocation {
   /** History states */
   // tslint:disable-next-line:variable-name
