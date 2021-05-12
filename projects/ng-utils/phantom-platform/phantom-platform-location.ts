@@ -175,8 +175,6 @@ export class PhantomPlatformLocation extends PlatformLocation {
     this._states = replace(this._states, this._currentState, stateObject);
     this._states.length = this._currentIndex + 1;
 
-    this._popStateListener({state: stateObject.state, type: POPSTATE_EVENT_TYPE});
-
     if (previousHash !== this.hash) {
       this._hashChangeListener({state: stateObject.state, type: HASHCHANGE_EVENT_TYPE});
     }
