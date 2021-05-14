@@ -40,7 +40,7 @@ export class AdvancedRouteService {
    * Emits route segments ()
    */
   public segments$ = this.activeRoutes$.pipe(
-    map(routes => routes.map(r => r.snapshot)),
+    map(routes => routes.map(r => r.snapshot).filter(isTruthy)),
     map(routes => routes.map(r => r.url[0])),
     map(segments => segments.filter(s => !!s)),
     map(segments => segments.map(s => s.path)),
