@@ -6,6 +6,7 @@
     "@angular/core": "^17.0.0"
   },
   "dependencies": {
+    "@thalesrc/js-utils": "^2.12.0",
     "tslib": "^2.3.0"
   },
   "sideEffects": false

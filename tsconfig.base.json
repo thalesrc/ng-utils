@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@thalesrc/ng-utils": ["libs/ng-utils/src/index.ts"]
+      "@thalesrc/ng-utils": ["libs/ng-utils/src/index.ts"],
+      "@thalesrc/ng-utils/phantom-platform": ["libs/ng-utils/phantom-platform/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

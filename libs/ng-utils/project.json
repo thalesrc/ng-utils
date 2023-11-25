@@ -36,7 +36,9 @@
         "lintFilePatterns": [
           "libs/ng-utils/**/*.ts",
           "libs/ng-utils/**/*.html",
-          "libs/ng-utils/package.json"
+          "libs/ng-utils/package.json",
+          "libs/ng-utils/phantom-platform/**/*.ts",
+          "libs/ng-utils/phantom-platform/**/*.html"
         ]
       }
     }

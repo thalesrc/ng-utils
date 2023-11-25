@@ -1,1 +1,1 @@
-export * from './lib/ng-utils/ng-utils.component';
+export * from '@thalesrc/ng-utils/phantom-platform'

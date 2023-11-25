@@ -1,0 +1,13 @@
+name: Publish Library
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm version ${{github.ref}} --no-git-tag-version
