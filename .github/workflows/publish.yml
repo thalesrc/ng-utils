@@ -5,9 +5,18 @@ on:
     types: [created]
 
 jobs:
-  prepare:
+  prepare-v17:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: npm version ${{github.ref}} --no-git-tag-version
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm i
+      - run: node_modules/.bin/nx run ng-utils:build
+      - run: cd ./dist/libs/ng-utils && npm version 17${{github.ref_name}} --no-git-tag-version
+      - uses: actions/upload-artifact@v3
+        with:
+          name: package-v17
+          path: dist/libs/ng-utils/
